@@ -245,7 +245,7 @@ var UI={
 
 var AppSettings={
 	langCode:(typeof navigator.userLanguage==='string')? navigator.userLanguage.substr(0,2) : 'en',
-	outputFileNameMatch:false,
+	outputFileNameMatch:true,
 	lightTheme:false,
 
 	load:function(){
