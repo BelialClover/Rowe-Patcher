@@ -56,13 +56,18 @@
 		// user will only need to provide the ROM file, as patches will be fetched from your server!
 		// a crc (or various crcs) can be provided for source files, allowing old formats like IPS to have validation!
 		var CUSTOM_PATCHER=[
-			{ //example: compressed file containing several patches, separate patches provided (recommended)
+			/*{ //example: compressed file containing several patches, separate patches provided (recommended)
 				file:'./patches/rowe.zip',
 				patches:[{
 					file:'Pokemon_ROWE.ups',
 					name:'Pokemon ROWE v1.6.4 - Magma Fix',
 					crc:0xd5ec24e4
 				}]
+			},*/
+			{ //example: uncompressed file
+				file:'./patches/Pokemon_ROWE.ups',
+				name:'Pokemon ROWE v1.6.4 - Magma Fix',
+				crc:0xd5ec24e4
 			}
 		];
 	--></script>
