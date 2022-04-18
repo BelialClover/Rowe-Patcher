@@ -455,6 +455,9 @@ addEvent(window,'load',function(){
 		setCreatorMode(!/enabled/.test(el('switch-create').className));
 	});
 	addEvent(el('button-apply'), 'click', function(){
+		
+	});
+	addEvent(el('button-doc'), 'click', function(){
 		applyPatch(patch, romFile, false);
 	});
 	addEvent(el('button-create'), 'click', function(){
