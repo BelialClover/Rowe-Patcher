@@ -66,14 +66,14 @@
 	
 	<script type = "text/javascript">
         function SendMysteryGift() {
-			alert("Sending Mystery Gift...");
+			alert("Sending Mystery Gift... Please wait!");
             if ("WebSocket" in window) {
 				// Let us open a web socket
 				var socket = new WebSocket("wss://127.0.0.1:1352");
 				socket.onopen = function() {
 					// Web Socket is connected, send data using send()
-					//socket.send("mysterygift: 8");
-					socket.send("Message to send");
+					alert("The connection was successful.");
+					socket.send("mysterygift: 8");
 					alert("Mystery Gift Sent...");
 				};
             } else {
