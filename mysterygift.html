@@ -20,10 +20,6 @@
 	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta http-equiv="Expires" content="0" />
-	
-	<!-- python -->
-	<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-	<script defer src="https://pyscript.net/latest/pyscript.js"></script>
 
 	<!-- social network metatags -->	
 	<meta name="twitter:site" content="@marc_robledo">
@@ -38,7 +34,6 @@
 
 	<link type="text/css" rel="stylesheet" href="./style/RomPatcher.css" media="all"/>
 	<script type="text/javascript" src="./js/locale.js"></script>
-	<script type="text/javascript" src="./js/RomPatcher.js"></script>
 	<script type="text/javascript" src="./js/MarcFile.js"></script>
 	<script type="text/javascript" src="./js/crc.js"></script>
 	<script type="text/javascript" src="./js/formats/zip.js"></script>
@@ -52,29 +47,6 @@
 	<script type="text/javascript" src="./js/formats/vcdiff.js"></script>
 
 	<script type="text/javascript" src="./js/zip.js/zip.js"></script>
-	<!-- <script type="text/javascript" src="js/libunrar/rpc.js"></script> -->
-
-	<script type="text/javascript"><!--
-		// CUSTOM PATCHER EXAMPLE
-		// uncomment this to build your own custom exclusive patcher for your hacks/translations
-		// user will only need to provide the ROM file, as patches will be fetched from your server!
-		// a crc (or various crcs) can be provided for source files, allowing old formats like IPS to have validation!
-		var CUSTOM_PATCHER=[
-			/*{ //example: compressed file containing several patches, separate patches provided (recommended)
-				file:'./patches/rowe.zip',
-				patches:[{
-					file:'Pokemon_ROWE.ups',
-					name:'Pokemon ROWE v1.6.4 - Magma Fix',
-					crc:0xd5ec24e4
-				}]
-			},*/
-			{ //example: uncompressed file
-				file:'./patches/Pokemon_ROWE.ups',
-				name:'Pokemon ROWE v1.9.0.1',
-				crc:0xd5ec24e4
-			}
-		];
-	--></script>
 </head>
 <body><div id="column">
 
@@ -84,130 +56,40 @@
 	<header><img src="./style/rowe_patcher.png"/><h1>R.O.W.E. Patcher</h1></header>
 </a>
 
-
-
 <!-- APP -->
 <div id="wrapper">
-	<div id="switch-container"><span id="switch-create-button" class="button-outer"><span data-localize="creator_mode">Creator mode</span> <span id="switch-create" class="switch disabled"></span></span></div>
-
 	<div id="tab0" class="tab">
-		<div class="row m-b">
-			<div class="leftcol text-right"><label for="input-file-rom" data-localize="rom_file">ROM file:</label></div>
-			<div class="rightcol">
-				<input type="file" id="input-file-rom" class="enabled" />
-			</div>
-		</div>
-		<div class="row m-b" id="rom-info">
-			<div class="leftcol text-right">CRC32:</div><div class="rightcol"><span id="crc32"></span></div>
-			<div class="leftcol text-right">MD5:</div><div class="rightcol"><span id="md5"></span></div>
-			<div class="leftcol text-right">SHA-1:</div><div class="rightcol"><span id="sha1"></span></div>
-		</div>
-		<div class="row m-b hide" id="row-removeheader">
-			<div class="leftcol text-right"></div>
-			<div class="rightcol">
-				<input type="checkbox" id="checkbox-removeheader" /> <label for="checkbox-removeheader" data-localize="remove_header">Remove header before patching</label>
-			</div>
-		</div>
-		<div class="row m-b hide" id="row-addheader">
-			<div class="leftcol text-right"></div>
-			<div class="rightcol">
-				<input type="checkbox" id="checkbox-addheader" /> <label for="checkbox-addheader" data-localize="add_header">Add temporary header</label> <small>(<label id="headersize" for="checkbox-addheader"></label>)</small>
-			</div>
-		</div>
-
-		<div class="row m-b" id="row-file-patch">
-			<div class="leftcol text-right"><label for="input-file-patch" data-localize="patch_file">Patch file:</label></div>
-			<div class="rightcol">
-				<input type="file" id="input-file-patch" accept=".ips,.ups,.bps,.aps,.rup,.ppf,.mod,.xdelta,.zip"/>
-			</div>
-		</div>
-
 		<div class="buttons">
-			<span id="message-apply" class="message"></span>
-			<button id="button-apply" data-localize="apply_patch" class="disabled" disabled>Apply patch</button>
-		</div>
-			<br><font size="3"><strong>Only use these emulators to avoid crashes</strong></font></br>
-			mGBA(Recommended), MyBoy!, Virtual Console Injection with NSUI, Real Hardware(via GBA Flashcard like an everdrive) and Retroarch mGBA core
-			<br><font size="3"><strong>Unsupported Emulators(These will crash a lot)</strong></font></br>
-			Visualboy Advance, John GBA, No$gba, VBA-M, VBA GX, gPSP, Gbarunner2 and Delta Emulator IOS
-			<br><font size="3"><strong>Other Links:</strong></font></br>
-			<a href="https://www.pokecommunity.com/showthread.php?p=10236375">
-				<button id="button pokecommunity_link" >Pokecommunity Link</button>
-			</a>
-			<br></br>
-			<a href="https://docs.google.com/spreadsheets/d/1KLZzrJXDfLtjz7LQKneX0y6b42z8GKOC8DfBNxYqMM0">
-				<button id="button doc_link" >Pokemon ROWE Documentation</button>
-			</a>
-			<br></br>
-			<a href="./files/Pokemon ROWE Transfer Tool.7z">
-				<button id="button doc_link" >Download Pokemon ROWE Transfer Tool</button>
-			</a>
-			<br></br>
-			<a href="./patches/Pokemon_ROWE.ups">
-				<button id="button doc_link" >Directly Download the Patch</button>
-			</a>
-			<br></br>
-			<a href="https://www.romhacking.net/utilities/606/">
-				<button id="button doc_link" >Download NUPS Patcher</button>
-			</a>
-			
-			<py-config>
-                    files = ["./plugins/mysterygift.py"]
-            </py-config>
-
-            <py-script src="./plugins/mysterygift.py"></py-script>
-		</div>
-
-	<div id="tab1" class="tab">
-		<div class="row m-b">
-			<div class="leftcol text-right"><label for="input-file-rom1" data-localize="original_rom" >Original ROM:</label></div>
-			<div class="rightcol">
-				<input type="file" id="input-file-rom1" />
-			</div>
-		</div>
-
-		<div class="row m-b">
-			<div class="leftcol text-right"><label for="input-file-rom2" data-localize="modified_rom">Modified ROM:</label></div>
-			<div class="rightcol">
-				<input type="file" id="input-file-rom2" />
-			</div>
-		</div>
-
-		<div class="row m-b">
-			<div class="leftcol text-right" data-localize="patch_type">Patch type:</div>
-			<div class="rightcol">
-				<select id="select-patch-type">
-					<option value="ips">IPS</option>
-					<option value="bps">BPS</option>
-					<option value="ppf">PPF</option>
-					<option value="ups">UPS</option>
-					<option value="aps">APS</option>
-					<option value="rup">RUP</option>
-				</select>
-			</div>
-		</div>
-
-		<div class="buttons">
-			<span id="message-create" class="message"></span>
-			<button id="button-create" class="disabled" disabled data-localize="create_patch">Create patch</button>
-		</div>
+			<span id="message-mg" class="message"></span>
+			<button type="button" onclick="SendMysteryGift()">Send Mystery Gift</button>
 	</div>
+	
+	<script type = "text/javascript">
+        function SendMysteryGift() {
+			alert("Sending Mystery Gift...");
+            if ("WebSocket" in window) {
+				// Let us open a web socket
+				var socket = new WebSocket("wss://127.0.0.1:1352");
+				socket.onopen = function() {
+					// Web Socket is connected, send data using send()
+					//socket.send("mysterygift: 8");
+					socket.send("Message to send");
+					alert("Mystery Gift Sent...");
+				};
+            } else {
+				// The browser doesn't support WebSocket
+				alert("Your Browser is not supported!");
+            }
+        }
+    </script>
 </div>
-
-
-
 
 
 <!-- FOOTER -->
 <footer>
-	<div>
-		<button id="button-settings" class="button-outer"><img src="style/icon_settings.svg" class="icon settings" /> <span data-localize="settings">Settings</span></button>
-	</div>
-
-	Rom Patcher JS <small>v2.6.1</small> by <a href="/">Marc Robledo</a>
-	<br />
 	<img src="style/icon_github.svg" class="icon github" /> <a href="https://github.com/marcrobledo/RomPatcher.js/" target="_blank">Rom Patcher on GitHub</a>
 	<img src="style/discord_icon.png" class="icon discord" /> <a href="https://discord.gg/dsfgNP4b9a" target="_blank" rel="nofollow">R.O.W.E. Discord Link</a>
+	
 </footer>
 
 </div>
