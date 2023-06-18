@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html translate="no">
 <head>
-	<title>R.O.W.E. Patcher</title>
+	<title>Mystery Gift - R.O.W.E. Patcher</title>
 	<meta http-equiv="content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="description" content="An online web-based ROM patcher. Supported formats: IPS, BPS, UPS, APS, RUP, PPF and xdelta."/>
 	<meta name="keywords" content="ips,ups,aps,bps,rup,ninja,ppf,xdelta,patcher,online,html5,web,rom,patch,hack,translation"/>
@@ -33,19 +33,6 @@
 	<meta name="twitter:card" content="photo">
 
 	<link type="text/css" rel="stylesheet" href="./style/RomPatcher.css" media="all"/>
-	<script type="text/javascript" src="./js/locale.js"></script>
-	<script type="text/javascript" src="./js/MarcFile.js"></script>
-	<script type="text/javascript" src="./js/crc.js"></script>
-	<script type="text/javascript" src="./js/formats/zip.js"></script>
-	<script type="text/javascript" src="./js/formats/ips.js"></script>
-	<script type="text/javascript" src="./js/formats/ups.js"></script>
-	<script type="text/javascript" src="./js/formats/aps.js"></script>
-	<script type="text/javascript" src="./js/formats/bps.js"></script>
-	<script type="text/javascript" src="./js/formats/rup.js"></script>
-	<script type="text/javascript" src="./js/formats/ppf.js"></script>
-	<script type="text/javascript" src="./js/formats/pmsr.js"></script>
-	<script type="text/javascript" src="./js/formats/vcdiff.js"></script>
-
 	<script type="text/javascript" src="./js/zip.js/zip.js"></script>
 </head>
 <body><div id="column">
@@ -59,27 +46,24 @@
 <!-- APP -->
 <div id="wrapper">
 	<div id="tab0" class="tab">
-		<div class="buttons">
-			<span id="message-mg" class="message"></span>
-			<button type="button" onclick="SendMysteryGift()">Send Mystery Gift</button>
+		<font size="5"><strong>R.O.W.E. Companion</strong></font></br>
+		<font size="3"><strong>Send a Mystery Gift to your game</strong></font></br>
+		<button type="button" onclick="SendMysteryGift()">Send Mystery Gift</button></br>
+		<font size="1">Make sure you have Mgba with the R.O.W.E. Companion script enabled and an active internet connection.</font>
 	</div>
 	
-	<script type = "text/javascript">
+	<script>
         function SendMysteryGift() {
-			alert("Sending Mystery Gift... Please wait!");
-            if ("WebSocket" in window) {
-				// Let us open a web socket
-				var socket = new WebSocket("wss://127.0.0.1:1352");
-				socket.onopen = function() {
-					// Web Socket is connected, send data using send()
-					alert("The connection was successful.");
-					socket.send("mysterygift: 8");
-					alert("Mystery Gift Sent...");
-				};
-            } else {
+			if ("WebSocket" in window) {
+				url = "ws://127.0.0.1:8888/mysterygift8";
+				// Try to connect to a socket and send the url
+				var socket = new WebSocket(url);
+				alert("The Mystery Gift was successfully sent!");
+				socket.close();
+			} else {
 				// The browser doesn't support WebSocket
-				alert("Your Browser is not supported!");
-            }
+				alert("Your Browser is not supported try another one!");
+			}
         }
     </script>
 </div>
@@ -88,8 +72,8 @@
 <!-- FOOTER -->
 <footer>
 	<img src="style/icon_github.svg" class="icon github" /> <a href="https://github.com/marcrobledo/RomPatcher.js/" target="_blank">Rom Patcher on GitHub</a>
-	<img src="style/discord_icon.png" class="icon discord" /> <a href="https://discord.gg/dsfgNP4b9a" target="_blank" rel="nofollow">R.O.W.E. Discord Link</a>
-	
+	<img src="style/discord_icon.png" class="icon discord" /> <a href="https://discord.gg/dsfgNP4b9a" target="_blank" rel="nofollow">R.O.W.E. Discord Link</a><br>
+	<font size="1">Thanks to CodeHighland for the help with the mgba scripting language.</font>
 </footer>
 
 </div>
