@@ -71,12 +71,12 @@
 		function SendOutbreakData() {
 			if ("WebSocket" in window) {
 				// Outbreak
-				outbreak_species     = 151 // Mew
+				outbreak_species     = 1   // Bulbasaur
 				outbreak_mapNum      = 16  // Route 101
 				outbreak_mapGroup    = 0   //
-				outbreak_move        = 29  // Headbutt
-				outbreak_probability = 100 // Headbutt
-				outbreak_level       = 32  // Level 32
+				outbreak_move        = 338 // Frenzy Plant
+				outbreak_probability = 10  // 10% chances
+				outbreak_level       = 5   // Level 5
 				outbreak_badges      = 0   // No Badges needed
 				//Species
 				url = "ws://127.0.0.1:8888/outbreakspecies"+outbreak_species+"received";
