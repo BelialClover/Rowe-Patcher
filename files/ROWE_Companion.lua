@@ -140,7 +140,7 @@ function socketMsgToFunction(msg)
     mysterygift_b2, mysterygift_e2 = string.find(msg, "received")
     if mysterygift_b ~= null then
         type   = string.sub(msg, mysterygift_b, mysterygift_e)
-        console:log("mysterygift Working: " .. type)
+        --console:log("mysterygift Working: " .. type)
         if type == "mysterygift" then
             number = string.sub(msg, mysterygift_e + 1, mysterygift_b2 - 1)
             setMysteryGift(number)
@@ -245,7 +245,7 @@ function socketMsgToFunction(msg)
                 number = tonumber(string.sub(msg, roamerSpecies_e + 1, roamerSpecies_b2 - 1))
                 Roamer_species = number
                 Roamer_percent = 1
-                console:log("Roamer Species Working: " .. Roamer_species .. " Percent: " .. Roamer_percent)
+               -- console:log("Roamer Species Working: " .. Roamer_species .. " Percent: " .. Roamer_percent)
             end
         end
         --level
@@ -257,7 +257,7 @@ function socketMsgToFunction(msg)
                 number = tonumber(string.sub(msg, roamerLevel_e + 1, roamerLevel_b2 - 1))
                 Roamer_level = number
                 Roamer_percent = Roamer_percent + 1
-                console:log("Roamer Level Working: " .. Roamer_level .. " Percent: " .. Roamer_percent)
+                --console:log("Roamer Level Working: " .. Roamer_level .. " Percent: " .. Roamer_percent)
             end
         end
         --number
@@ -269,7 +269,7 @@ function socketMsgToFunction(msg)
                 number = tonumber(string.sub(msg, roamerNumber_e + 1, roamerNumber_b2 - 1))
                 Roamer_num = number
                 Roamer_percent = Roamer_percent + 1
-                console:log("Roamer Number Working: " .. Roamer_num .. " Percent: " .. Roamer_percent)
+                --console:log("Roamer Number Working: " .. Roamer_num .. " Percent: " .. Roamer_percent)
             end
         end
         --badges
@@ -281,7 +281,7 @@ function socketMsgToFunction(msg)
                 number = tonumber(string.sub(msg, roamerBadges_e + 1, roamerBadges_b2 - 1))
                 Roamer_badges = number
                 Roamer_percent = Roamer_percent + 1
-                console:log("Roamer Badges Working: " .. Roamer_badges .. " Percent: " .. Roamer_percent)
+                --console:log("Roamer Badges Working: " .. Roamer_badges .. " Percent: " .. Roamer_percent)
             end
         end
 
@@ -296,7 +296,7 @@ function setMysteryGift(value)
     
 	currentMysteryGift = tonumber(value)
     
-    console:log("New Mystery Gift ID: " .. currentMysteryGift)
+    --console:log("New Mystery Gift ID: " .. currentMysteryGift)
     console:log("A Mystery Gift was received!")
     emu:write16(adress_mysterygift, currentMysteryGift) -- Sets the Mystery Gift
 end
@@ -305,7 +305,6 @@ function createOubreak()
     if not (Outbreak_species == 0) then 
         local species = speciesNames[Outbreak_species]
         console:log("An Outbreak of " .. species .. " was found!")
-        --console:log("An Outbreak of was found!")
         emu:write16(adress_outbreak_species,     Outbreak_species)
         emu:write16(adress_outbreak_mapnum,      Outbreak_mapnum)
         emu:write16(adress_outbreak_group,       Outbreak_mapgroup)
@@ -321,7 +320,6 @@ function createRoamer()
     if not (Roamer_species == 0) then 
         local species = speciesNames[Roamer_species]
         console:log("A Roamer " .. species .. " was found!")
-        --console:log("An Outbreak of was found!")
         emu:write16(adress_roamer_species,   Roamer_species)
         emu:write16(adress_roamer_level,     Roamer_level)
         emu:write16(adress_roamer_num,       Roamer_num)
