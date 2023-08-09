@@ -55,7 +55,7 @@
 	<script>
         function SendMysteryGift() {
 			if ("WebSocket" in window) {
-				url = "ws://127.0.0.1:8888/mysterygift8";
+				url = "ws://127.0.0.1:8888/mysterygift8received";
 				// Try to connect to a socket and send the url
 				var socket = new WebSocket(url);
 				alert("The Mystery Gift was successfully sent!");
