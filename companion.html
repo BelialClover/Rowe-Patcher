@@ -49,6 +49,7 @@
 		<font size="5"><strong>R.O.W.E. Companion</strong></font></br>
 		<font size="3"><strong>Send a Mystery Gift to your game</strong></font></br>
 		<button type="button" onclick="SendMysteryGiftData()">Send Mystery Gift</button></br>
+		<font size="3"><strong>Send an Outbreak to your game</strong></font></br>
 		<button type="button" onclick="SendOutbreakData()">Send Outbreak</button></br>
 		<font size="1">Make sure you have Mgba with the R.O.W.E. Companion script enabled and an active internet connection.</font>
 	</div>
@@ -94,18 +95,18 @@
 				var socket = new WebSocket(url);
 				socket.close();
 				//Probability
-				url = "ws://127.0.0.1:8888/probability"+outbreak_probability+"received";
+				url = "ws://127.0.0.1:8888/outbreakprobability"+outbreak_probability+"received";
 				var socket = new WebSocket(url);
 				socket.close();
 				//Level
-				url = "ws://127.0.0.1:8888/level"+outbreak_level+"received";
+				url = "ws://127.0.0.1:8888/outbreaklevel"+outbreak_level+"received";
 				var socket = new WebSocket(url);
 				socket.close();
 				//Badges
-				url = "ws://127.0.0.1:8888/badges"+outbreak_badges+"received";
+				url = "ws://127.0.0.1:8888/outbreabadges"+outbreak_badges+"received";
 				var socket = new WebSocket(url);
 				socket.close();
-				alert("The Outbreak was successfully sent!");
+				alert("The Outbreak data was successfully sent!");
 			} else {
 				// The browser doesn't support WebSocket
 				alert("Your Browser is not supported try another one!");
