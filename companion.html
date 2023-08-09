@@ -60,7 +60,7 @@
         function SendMysteryGiftData() {
 			if ("WebSocket" in window) {
 				// Mystery Gift
-				mysterygiftnumber = 8
+				mysterygiftnumber = 13
 				url = "ws://127.0.0.1:8888/mysterygift"+mysterygiftnumber+"received";
 				var socket = new WebSocket(url);
 				alert("The Mystery Gift was successfully sent!");
@@ -117,10 +117,10 @@
 		function SendRoamerData() {
 			if ("WebSocket" in window) {
 				// Roamer
-				roamer_species     = 487 // Giratina
+				roamer_species     = 803 // Poipole
 				roamer_num         = 1   // First Roamer
-				roamer_level       = 70  // Level 5
-				roamer_badges      = 8   // No Badges needed
+				roamer_level       = 40  // Level 45
+				roamer_badges      = 8   // 8 Badges needed
 				//Species
 				url = "ws://127.0.0.1:8888/roamerspecies"+roamer_species+"received";
 				var socket = new WebSocket(url);
