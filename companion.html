@@ -48,18 +48,64 @@
 	<div id="tab0" class="tab">
 		<font size="5"><strong>R.O.W.E. Companion</strong></font></br>
 		<font size="3"><strong>Send a Mystery Gift to your game</strong></font></br>
-		<button type="button" onclick="SendMysteryGift()">Send Mystery Gift</button></br>
+		<button type="button" onclick="SendMysteryGiftData()">Send Mystery Gift</button></br>
+		<button type="button" onclick="SendOutbreakData()">Send Outbreak</button></br>
 		<font size="1">Make sure you have Mgba with the R.O.W.E. Companion script enabled and an active internet connection.</font>
 	</div>
 	
 	<script>
-        function SendMysteryGift() {
+        function SendMysteryGiftData() {
 			if ("WebSocket" in window) {
-				url = "ws://127.0.0.1:8888/mysterygift8received";
-				// Try to connect to a socket and send the url
+				// Mystery Gift
+				mysterygiftnumber = 8
+				url = "ws://127.0.0.1:8888/mysterygift"+mysterygiftnumber+"received";
 				var socket = new WebSocket(url);
 				alert("The Mystery Gift was successfully sent!");
 				socket.close();
+			} else {
+				// The browser doesn't support WebSocket
+				alert("Your Browser is not supported try another one!");
+			}
+        }
+		function SendOutbreakData() {
+			if ("WebSocket" in window) {
+				// Outbreak
+				outbreak_species     = 151 // Mew
+				outbreak_mapNum      = 16  // Route 101
+				outbreak_mapGroup    = 0   //
+				outbreak_move        = 29  // Headbutt
+				outbreak_probability = 100 // Headbutt
+				outbreak_level       = 32  // Level 32
+				outbreak_badges      = 0   // No Badges needed
+				//Species
+				url = "ws://127.0.0.1:8888/outbreakspecies"+outbreak_species+"received";
+				var socket = new WebSocket(url);
+				socket.close();
+				//Mapnum
+				url = "ws://127.0.0.1:8888/outbreakmapnum"+outbreak_mapNum+"received";
+				var socket = new WebSocket(url);
+				socket.close();
+				//Mapgroup
+				url = "ws://127.0.0.1:8888/outbreakmapgroup"+outbreak_mapGroup+"received";
+				var socket = new WebSocket(url);
+				socket.close();
+				//Move
+				url = "ws://127.0.0.1:8888/outbreakmove1"+outbreak_move+"received";
+				var socket = new WebSocket(url);
+				socket.close();
+				//Probability
+				url = "ws://127.0.0.1:8888/probability"+outbreak_probability+"received";
+				var socket = new WebSocket(url);
+				socket.close();
+				//Level
+				url = "ws://127.0.0.1:8888/level"+outbreak_level+"received";
+				var socket = new WebSocket(url);
+				socket.close();
+				//Badges
+				url = "ws://127.0.0.1:8888/badges"+outbreak_badges+"received";
+				var socket = new WebSocket(url);
+				socket.close();
+				alert("The Outbreak was successfully sent!");
 			} else {
 				// The browser doesn't support WebSocket
 				alert("Your Browser is not supported try another one!");
