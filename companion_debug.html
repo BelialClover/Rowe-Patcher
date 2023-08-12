@@ -80,7 +80,7 @@
 				outbreak_probability = 50  // 10% chances
 				outbreak_level       = 5   // Level 5
 				outbreak_badges      = 0   // No Badges needed
-				message              = "outbreakspecies"+outbreak_species+"outbreakmapnum"+outbreak_mapNum+"outbreakmapgroup"+outbreak_mapGroup+"outbreakmove1"+outbreak_move+"outbreakprobability"+outbreak_probability+"outbreaklevel"+outbreak_level+"outbreakbadges"+outbreak_badges
+				message              = "outbreakspecies"+outbreak_species+"outbreakmapnum"+outbreak_mapNum+"outbreakmapgroup"+outbreak_mapGroup+"outbreakmove1"+outbreak_move+"outbreakprobability"+outbreak_probability+"outbreaklevel"+outbreak_level+"outbreakbadges"+outbreak_badges+"received"
 				//Outbreak Data
 				url = "ws://127.0.0.1:8888/"+message;
 				var socket = new WebSocket(url);
@@ -98,7 +98,7 @@
 				roamer_num         = 1   // First Roamer
 				roamer_level       = 40  // Level 45
 				roamer_badges      = 8   // 8 Badges needed
-				message            = "roamerspecies"+roamer_species+"roamerlevel"+roamer_level+"roamernum"+roamer_num+"roamerbadges"+roamer_badges
+				message            = "roamerspecies"+roamer_species+"roamerlevel"+roamer_level+"roamernum"+roamer_num+"roamerbadges"+roamer_badges+"received"
 				//Roamer Data
 				url = "ws://127.0.0.1:8888/"+message;
 				var socket = new WebSocket(url);
