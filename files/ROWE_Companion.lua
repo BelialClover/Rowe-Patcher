@@ -118,10 +118,10 @@ function printWelcomeMessage(buffer)
 	buffer:clear()
     local filelocation = DATA_FOLDER .. "/abomasnow.mp3"
     if file_exists(filelocation) == true then
-        buffer:print(string.format("Welcome to R.O.W.E. Companion everything seems to be set up correctly."))
+        buffer:print(string.format("Welcome to R.O.W.E. Companion Version 1.1 everything seems to be set up correctly."))
     else
-        buffer:print(string.format("Welcome to R.O.W.E. Companion everything seems to be set up correctly."))
-	    --buffer:print(string.format("Welcome to R.O.W.E. Companion, the Cry directory does not seem to be set up correctly."))
+        buffer:print(string.format("Welcome to R.O.W.E. Companion Version 1.1 everything seems to be set up correctly."))
+	    --buffer:print(string.format("Welcome to R.O.W.E. Companion Version 1.1, the Cry directory does not seem to be set up correctly."))
     end
 end
 
