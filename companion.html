@@ -53,18 +53,39 @@
 		<button type="button" onclick="SendOutbreakData()">Send Outbreak</button></br>
 		<font size="3"><strong>Send a Roamer Pokemon to your game</strong></font></br>
 		<button type="button" onclick="SendRoamerData()">Send Roamer</button></br>
+		<font size="3"><strong>Send all of the data above</strong></font></br>
+		<button type="button" onclick="SendEverything()">Send Everything</button></br>
 		<font size="1">Make sure you have Mgba with the R.O.W.E. Companion script enabled and an active internet connection.</font>
 	</div>
 	
 	<script>
+		url_message = "ws://127.0.0.1:8888/"
+		// Mystery Gift
+		mysterygiftnumber = 13
+		mystery_message   = "mysterygift"+mysterygiftnumber+"receivedmysterygift"
+		// Outbreak
+		outbreak_species     = 1   // Bulbasaur
+		outbreak_mapNum      = 16  // Route 101
+		outbreak_mapGroup    = 0   //
+		outbreak_move        = 338 // Frenzy Plant
+		outbreak_probability = 25  // 10% chances
+		outbreak_level       = 0   // scaled level
+		outbreak_badges      = 0   // No Badges needed
+		outbreak_message     = "outbreakspecies"+outbreak_species+"outbreakmapnum"+outbreak_mapNum+"outbreakmapgroup"+outbreak_mapGroup+"outbreakmove1"+outbreak_move+"outbreakprobability"+outbreak_probability+"outbreaklevel"+outbreak_level+"outbreakbadges"+outbreak_badges+"receivedoutbreak"
+		// Roamer
+		roamer_species     = 803 // Poipole
+		roamer_num         = 1   // First Roamer
+		roamer_level       = 40  // Level 45
+		roamer_badges      = 8   // 8 Badges needed
+		roamer_message     = "roamerspecies"+roamer_species+"roamerlevel"+roamer_level+"roamernum"+roamer_num+"roamerbadges"+roamer_badges+"receivedroamer"
+
         function SendMysteryGiftData() {
 			if ("WebSocket" in window) {
-				// Mystery Gift
-				mysterygiftnumber = 13
-				url = "ws://127.0.0.1:8888/mysterygift"+mysterygiftnumber+"received";
 				var socket = new WebSocket(url);
-				alert("The Mystery Gift was successfully sent!");
+				url = url_message+mystery_message;
+				var socket = new WebSocket(url);
 				socket.close();
+				alert("The Mystery Gift was successfully sent!");
 			} else {
 				// The browser doesn't support WebSocket
 				alert("Your Browser is not supported try another one!");
@@ -72,40 +93,8 @@
         }
 		function SendOutbreakData() {
 			if ("WebSocket" in window) {
-				// Outbreak
-				outbreak_species     = 1   // Bulbasaur
-				outbreak_mapNum      = 16  // Route 101
-				outbreak_mapGroup    = 0   //
-				outbreak_move        = 338 // Frenzy Plant
-				outbreak_probability = 50  // 10% chances
-				outbreak_level       = 5   // Level 5
-				outbreak_badges      = 0   // No Badges needed
-				//Species
-				url = "ws://127.0.0.1:8888/outbreakspecies"+outbreak_species+"received";
-				var socket = new WebSocket(url);
-				socket.close();
-				//Mapnum
-				url = "ws://127.0.0.1:8888/outbreakmapnum"+outbreak_mapNum+"received";
-				var socket = new WebSocket(url);
-				socket.close();
-				//Mapgroup
-				url = "ws://127.0.0.1:8888/outbreakmapgroup"+outbreak_mapGroup+"received";
-				var socket = new WebSocket(url);
-				socket.close();
-				//Move
-				url = "ws://127.0.0.1:8888/outbreakmove1"+outbreak_move+"received";
-				var socket = new WebSocket(url);
-				socket.close();
-				//Probability
-				url = "ws://127.0.0.1:8888/outbreakprobability"+outbreak_probability+"received";
-				var socket = new WebSocket(url);
-				socket.close();
-				//Level
-				url = "ws://127.0.0.1:8888/outbreaklevel"+outbreak_level+"received";
-				var socket = new WebSocket(url);
-				socket.close();
-				//Badges
-				url = "ws://127.0.0.1:8888/outbreakbadges"+outbreak_badges+"received";
+				//Outbreak Data
+				url = url_message+outbreak_message;
 				var socket = new WebSocket(url);
 				socket.close();
 				alert("The Outbreak data was successfully sent!");
@@ -116,28 +105,23 @@
 		}
 		function SendRoamerData() {
 			if ("WebSocket" in window) {
-				// Roamer
-				roamer_species     = 803 // Poipole
-				roamer_num         = 1   // First Roamer
-				roamer_level       = 40  // Level 45
-				roamer_badges      = 8   // 8 Badges needed
-				//Species
-				url = "ws://127.0.0.1:8888/roamerspecies"+roamer_species+"received";
-				var socket = new WebSocket(url);
-				socket.close();
-				//Level
-				url = "ws://127.0.0.1:8888/roamerlevel"+roamer_level+"received";
-				var socket = new WebSocket(url);
-				socket.close();
-				//Num
-				url = "ws://127.0.0.1:8888/roamernum"+roamer_num+"received";
-				var socket = new WebSocket(url);
-				socket.close();
-				//Badges
-				url = "ws://127.0.0.1:8888/roamerbadges"+roamer_badges+"received";
+				//Roamer Data
+				url = url_message+roamer_message;
 				var socket = new WebSocket(url);
 				socket.close();
 				alert("The Roamer data was successfully sent!");
+			} else {
+				// The browser doesn't support WebSocket
+				alert("Your Browser is not supported try another one!");
+			}
+        }
+		function SendEverything() {
+			if ("WebSocket" in window) {
+				//Send Everything for people with wonky firewalls
+				url = url_message+mystery_message+roamer_message+outbreak_message;
+				var socket = new WebSocket(url);
+				socket.close();
+				alert("Everything was successfully sent!");
 			} else {
 				// The browser doesn't support WebSocket
 				alert("Your Browser is not supported try another one!");

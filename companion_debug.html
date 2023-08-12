@@ -68,8 +68,8 @@
 		outbreak_mapNum      = 16  // Route 101
 		outbreak_mapGroup    = 0   //
 		outbreak_move        = 338 // Frenzy Plant
-		outbreak_probability = 50  // 10% chances
-		outbreak_level       = 5   // Level 5
+		outbreak_probability = 25  // 10% chances
+		outbreak_level       = 0   // scaled level
 		outbreak_badges      = 0   // No Badges needed
 		outbreak_message     = "outbreakspecies"+outbreak_species+"outbreakmapnum"+outbreak_mapNum+"outbreakmapgroup"+outbreak_mapGroup+"outbreakmove1"+outbreak_move+"outbreakprobability"+outbreak_probability+"outbreaklevel"+outbreak_level+"outbreakbadges"+outbreak_badges+"receivedoutbreak"
 		// Roamer
@@ -117,25 +117,7 @@
         }
 		function SendEverything() {
 			if ("WebSocket" in window) {
-				// Mystery Gift
-				/*mysterygiftnumber  = 13
-				mystery_message    = "mysterygift"+mysterygiftnumber+"receivedmysterygift"
-				// Roamer
-				roamer_species     = 803 // Poipole
-				roamer_num         = 1   // First Roamer
-				roamer_level       = 40  // Level 45
-				roamer_badges      = 8   // 8 Badges needed
-				roamer_message     = "roamerspecies"+roamer_species+"roamerlevel"+roamer_level+"roamernum"+roamer_num+"roamerbadges"+roamer_badges+"receivedroamer"
-				// Outbreak
-				outbreak_species     = 1   // Bulbasaur
-				outbreak_mapNum      = 16  // Route 101
-				outbreak_mapGroup    = 0   //
-				outbreak_move        = 338 // Frenzy Plant
-				outbreak_probability = 50  // 10% chances
-				outbreak_level       = 5   // Level 5
-				outbreak_badges      = 0   // No Badges needed
-				outbreak_message     = "outbreakspecies"+outbreak_species+"outbreakmapnum"+outbreak_mapNum+"outbreakmapgroup"+outbreak_mapGroup+"outbreakmove1"+outbreak_move+"outbreakprobability"+outbreak_probability+"outbreaklevel"+outbreak_level+"outbreakbadges"+outbreak_badges+"receivedoutbreak"*/
-				
+				//Send Everything for people with wonky firewalls
 				url = url_message+mystery_message+roamer_message+outbreak_message;
 				var socket = new WebSocket(url);
 				socket.close();
