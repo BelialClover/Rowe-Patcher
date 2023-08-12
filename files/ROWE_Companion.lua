@@ -40,6 +40,8 @@ local adress_roamer_species = 0x0203feb0
 local adress_roamer_level   = 0x0203fea0
 local adress_roamer_num     = 0x0203fdf0
 local adress_roamer_badges  = 0x0203fde0
+--Debug stuff
+local enableDebug = false   
 
 function globalFunction()
     --Cries
@@ -137,7 +139,7 @@ end
 function socketMsgToFunction(msg)
     --Mystery gift
     mysterygift_b,  mysterygift_e  = string.find(msg, "mysterygift")
-    mysterygift_b2, mysterygift_e2 = string.find(msg, "received")
+    mysterygift_b2, mysterygift_e2 = string.find(msg, "receivedmysterygift")
     if mysterygift_b ~= null then
         type   = string.sub(msg, mysterygift_b, mysterygift_e)
         --console:log("mysterygift Working: " .. type)
@@ -149,86 +151,100 @@ function socketMsgToFunction(msg)
     --Outbreak
         --species
         outbreakSpecies_b,  outbreakSpecies_e   = string.find(msg, "outbreakspecies")
-        outbreakSpecies_b2, outbreakSpecies_e2  = string.find(msg, "received")
+        outbreakSpecies_b2, outbreakSpecies_e2  = string.find(msg, "outbreakmapnum")
         if outbreakSpecies_b ~= null then
             type   = string.sub(msg, outbreakSpecies_b, outbreakSpecies_e)
             if type == "outbreakspecies" then
                 number = tonumber(string.sub(msg, outbreakSpecies_e + 1, outbreakSpecies_b2 - 1))
                 Outbreak_species = number
                 Outbreak_percent = 1
-                --console:log("Outbreak Species Working: " .. Outbreak_species .. " Percent: " .. Outbreak_percent)
+				if enableDebug == true then
+					console:log("Outbreak Species Working: " .. Outbreak_species .. " Percent: " .. Outbreak_percent)
+				end
             end
         end
         --mapnum
         outbreakMapNum_b,  outbreakMapNum_e  = string.find(msg, "outbreakmapnum")
-        outbreakMapNum_b2, outbreakMapNum_e2 = string.find(msg, "received")
+        outbreakMapNum_b2, outbreakMapNum_e2 = string.find(msg, "outbreakmapgroup")
         if outbreakMapNum_b ~= null then
             type   = string.sub(msg, outbreakMapNum_b, outbreakMapNum_e)
             if type == "outbreakmapnum" then
                 number = tonumber(string.sub(msg, outbreakMapNum_e + 1, outbreakMapNum_b2 - 1))
                 Outbreak_mapnum = number
                 Outbreak_percent = Outbreak_percent + 1
-                --console:log("Outbreak MapNum Working: " .. Outbreak_mapnum .. " Percent: " .. Outbreak_percent)
+				if enableDebug == true then
+					console:log("Outbreak MapNum Working: " .. Outbreak_mapnum .. " Percent: " .. Outbreak_percent)
+				end
             end
         end
         --mapgroup
         outbreakMapGroup_b,  outbreakMapGroup_e   = string.find(msg, "outbreakmapgroup")
-        outbreakMapGroup_b2, outbreakMapGroup_e2 = string.find(msg, "received")
+        outbreakMapGroup_b2, outbreakMapGroup_e2 = string.find(msg, "outbreakmove1")
         if outbreakMapGroup_b ~= null then
             type   = string.sub(msg, outbreakMapGroup_b, outbreakMapGroup_e)
             if type == "outbreakmapgroup" then
                 number = tonumber(string.sub(msg, outbreakMapGroup_e + 1, outbreakMapGroup_b2 - 1))
                 Outbreak_mapgroup = number
                 Outbreak_percent = Outbreak_percent + 1
-                --console:log("Outbreak MapGroup Working: " .. Outbreak_mapgroup .. " Percent: " .. Outbreak_percent)
+				if enableDebug == true then
+					console:log("Outbreak MapGroup Working: " .. Outbreak_mapgroup .. " Percent: " .. Outbreak_percent)
+				end
             end
         end
         --move1
         outbreakMove1_b, outbreakMove1_e   = string.find(msg, "outbreakmove1")
-        outbreakMove1_b2, outbreakMove1_e2 = string.find(msg, "received")
+        outbreakMove1_b2, outbreakMove1_e2 = string.find(msg, "outbreakprobability")
         if outbreakMove1_b ~= null then
             type   = string.sub(msg, outbreakMove1_b, outbreakMove1_e)
             if type == "outbreakmove1" then
                 number = tonumber(string.sub(msg, outbreakMove1_e + 1, outbreakMove1_b2 - 1))
                 Outbreak_move1 = number
                 Outbreak_percent = Outbreak_percent + 1
-                --console:log("Outbreak Move 1 Working: " .. Outbreak_move1 .. " Percent: " .. Outbreak_percent)
+				if enableDebug == true then
+					console:log("Outbreak Move 1 Working: " .. Outbreak_move1 .. " Percent: " .. Outbreak_percent)
+				end
             end
         end
         --probability
         outbreakProbability_b,  outbreakProbability_e   = string.find(msg, "outbreakprobability")
-        outbreakProbability_b2, outbreakProbability_e2 = string.find(msg, "received")
+        outbreakProbability_b2, outbreakProbability_e2 = string.find(msg, "outbreaklevel")
         if outbreakProbability_b ~= null then
             type   = string.sub(msg, outbreakProbability_b, outbreakProbability_e)
             if type == "outbreakprobability" then
                 number = tonumber(string.sub(msg, outbreakProbability_e + 1, outbreakProbability_b2 - 1))
                 Outbreak_probability = number
                 Outbreak_percent = Outbreak_percent + 1
-                --console:log("Outbreak Probability Working: " .. Outbreak_probability .. " Percent: " .. Outbreak_percent)
+				if enableDebug == true then
+					console:log("Outbreak Probability Working: " .. Outbreak_probability .. " Percent: " .. Outbreak_percent)
+				end
             end
         end
         --level
         outbreakLevel_b, outbreakLevel_e   = string.find(msg, "outbreaklevel")
-        outbreakLevel_b2, outbreakLevel_e2 = string.find(msg, "received")
+        outbreakLevel_b2, outbreakLevel_e2 = string.find(msg, "outbreakbadges")
         if outbreakLevel_b ~= null then
             type   = string.sub(msg, outbreakLevel_b, outbreakLevel_e)
             if type == "outbreaklevel" then
                 number = tonumber(string.sub(msg, outbreakLevel_e + 1, outbreakLevel_b2 - 1))
                 Outbreak_level = number
                 Outbreak_percent = Outbreak_percent + 1
-                --console:log("Outbreak Level Working: " .. Outbreak_level .. " Percent: " .. Outbreak_percent)
+				if enableDebug == true then
+					console:log("Outbreak Level Working: " .. Outbreak_level .. " Percent: " .. Outbreak_percent)
+				end
             end
         end
         --badges
         outbreakBadges_b,  outbreakBadges_e  = string.find(msg, "outbreakbadges")
-        outbreakBadges_b2, outbreakBadges_e2 = string.find(msg, "received")
+        outbreakBadges_b2, outbreakBadges_e2 = string.find(msg, "receivedoutbreak")
         if outbreakBadges_b ~= null then
             type   = string.sub(msg, outbreakBadges_b, outbreakBadges_e)
             if type == "outbreakbadges" then
                 number = tonumber(string.sub(msg, outbreakBadges_e + 1, outbreakBadges_b2 - 1))
                 Outbreak_badges = number
                 Outbreak_percent = Outbreak_percent + 1
-                --console:log("Outbreak Badges Working: " .. Outbreak_badges .. " Percent: " .. Outbreak_percent)
+				if enableDebug == true then
+					console:log("Outbreak Badges Working: " .. Outbreak_badges .. " Percent: " .. Outbreak_percent)
+				end
             end
         end
 
@@ -238,50 +254,58 @@ function socketMsgToFunction(msg)
     --Roamer
         --species
         roamerSpecies_b,  roamerSpecies_e  = string.find(msg, "roamerspecies")
-        roamerSpecies_b2, roamerSpecies_e2 = string.find(msg, "received")
+        roamerSpecies_b2, roamerSpecies_e2 = string.find(msg, "roamerlevel")
         if roamerSpecies_b ~= null then
             type   = string.sub(msg, roamerSpecies_b, roamerSpecies_e)
             if type == "roamerspecies" then
                 number = tonumber(string.sub(msg, roamerSpecies_e + 1, roamerSpecies_b2 - 1))
                 Roamer_species = number
                 Roamer_percent = 1
-               -- console:log("Roamer Species Working: " .. Roamer_species .. " Percent: " .. Roamer_percent)
+				if enableDebug == true then
+					console:log("Roamer Species Working: " .. Roamer_species .. " Percent: " .. Roamer_percent)
+				end
             end
         end
         --level
         roamerLevel_b, roamerLevel_e   = string.find(msg, "roamerlevel")
-        roamerLevel_b2, roamerLevel_e2 = string.find(msg, "received")
+        roamerLevel_b2, roamerLevel_e2 = string.find(msg, "roamernum")
         if roamerLevel_b ~= null then
             type   = string.sub(msg, roamerLevel_b, roamerLevel_e)
             if type == "roamerlevel" then
                 number = tonumber(string.sub(msg, roamerLevel_e + 1, roamerLevel_b2 - 1))
                 Roamer_level = number
                 Roamer_percent = Roamer_percent + 1
-                --console:log("Roamer Level Working: " .. Roamer_level .. " Percent: " .. Roamer_percent)
+				if enableDebug == true then
+					console:log("Roamer Level Working: " .. Roamer_level .. " Percent: " .. Roamer_percent)
+				end
             end
         end
         --number
         roamerNumber_b,  roamerNumber_e  = string.find(msg, "roamernum")
-        roamerNumber_b2, roamerNumber_e2 = string.find(msg, "received")
+        roamerNumber_b2, roamerNumber_e2 = string.find(msg, "roamerbadges")
         if roamerNumber_b ~= null then
             type   = string.sub(msg, roamerNumber_b, roamerNumber_e)
             if type == "roamernum" then
                 number = tonumber(string.sub(msg, roamerNumber_e + 1, roamerNumber_b2 - 1))
                 Roamer_num = number
                 Roamer_percent = Roamer_percent + 1
-                --console:log("Roamer Number Working: " .. Roamer_num .. " Percent: " .. Roamer_percent)
+				if enableDebug == true then
+					console:log("Roamer Number Working: " .. Roamer_num .. " Percent: " .. Roamer_percent)
+				end
             end
         end
         --badges
         roamerBadges_b,  roamerBadges_e  = string.find(msg, "roamerbadges")
-        roamerBadges_b2, roamerBadges_e2 = string.find(msg, "received")
+        roamerBadges_b2, roamerBadges_e2 = string.find(msg, "receivedroamer")
         if roamerBadges_b ~= null then
             type   = string.sub(msg, roamerBadges_b, roamerBadges_e)
             if type == "roamerbadges" then
                 number = tonumber(string.sub(msg, roamerBadges_e + 1, roamerBadges_b2 - 1))
                 Roamer_badges = number
                 Roamer_percent = Roamer_percent + 1
-                --console:log("Roamer Badges Working: " .. Roamer_badges .. " Percent: " .. Roamer_percent)
+				if enableDebug == true then
+					console:log("Roamer Badges Working: " .. Roamer_badges .. " Percent: " .. Roamer_percent)
+				end
             end
         end
 
