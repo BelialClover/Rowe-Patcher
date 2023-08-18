@@ -135,16 +135,7 @@
 			if ("WebSocket" in window) {
 				//Roamer Data
 				let password = prompt("Please enter the password", "Password");
-				/*let password0 = prompt("Please enter the password 0", "Password");
-				let password1 = prompt("Please enter the password 1", "Password");
-				let password2 = prompt("Please enter the password 2", "Password");
-				let password3 = prompt("Please enter the password 3", "Password");
-				let password4 = prompt("Please enter the password 4", "Password");
-				let password5 = prompt("Please enter the password 5", "Password");
-				let password6 = prompt("Please enter the password 6", "Password");
-				let password7 = prompt("Please enter the password 7", "Password");
-				let password8 = prompt("Please enter the password 8", "Password");*/
-				var fullpassword = password.split('.');
+				var fullpassword = password.split('-');
 				var password0 = fullpassword[0];
 				var password1 = fullpassword[1];
 				var password2 = fullpassword[2];
