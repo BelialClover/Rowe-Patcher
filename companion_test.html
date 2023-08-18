@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html translate="no">
+<head>
+	<title>Mystery Gift - R.O.W.E. Patcher</title>
+	<meta http-equiv="content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="description" content="An online web-based ROM patcher. Supported formats: IPS, BPS, UPS, APS, RUP, PPF and xdelta."/>
+	<meta name="keywords" content="ips,ups,aps,bps,rup,ninja,ppf,xdelta,patcher,online,html5,web,rom,patch,hack,translation"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+	<link rel="manifest" href="./manifest.json"/>
+	<link rel="shortcut icon" href="./style/app_icon_16.png" type="image/png" sizes="16x16"/>
+	<link rel="shortcut icon" href="./style/app_icon_192.png" type="image/png" sizes="192x192"/>
+	<!-- iOS icons -->
+	<link rel="apple-touch-icon" sizes="57x57" href="./style/app_icon_114.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="./style/app_icon_114.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="./style/app_icon_144.png" />
+	<link rel="apple-touch-icon" sizes="144x144" href="./style/app_icon_144.png" />
+	<link rel="apple-touch-icon" href="./style/app_icon_192.png" />
+
+	<!-- cache -->
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+
+	<!-- social network metatags -->	
+	<meta name="twitter:site" content="@marc_robledo">
+	<meta name="twitter:creator" content="@marc_robledo">
+	<meta name="twitter:domain" content="marcrobledo.com">
+	<meta property="og:title" content="Rom Patcher JS">
+	<meta name="twitter:title" content="Rom Patcher JS">
+	<meta name="twitter:description" content="An online web-based ROM patcher. Supported formats: IPS, BPS, UPS, APS, RUP, PPF and xdelta.">
+	<meta property="og:image" content="https://www.marcrobledo.com/RomPatcher.js/style/thumbnail.jpg">
+	<meta name="twitter:image" content="https://www.marcrobledo.com/RomPatcher.js/style/thumbnail.jpg">
+	<meta name="twitter:card" content="photo">
+
+	<link type="text/css" rel="stylesheet" href="./style/RomPatcher.css" media="all"/>
+	<script type="text/javascript" src="./js/zip.js/zip.js"></script>
+</head>
+<body><div id="column">
+
+
+<!-- HEADER -->
+<a href="./index.html">
+	<header><img src="./style/rowe_patcher.png"/><h1>R.O.W.E. Patcher</h1></header>
+</a>
+
+<!-- APP -->
+<div id="wrapper">
+	<div id="tab0" class="tab">
+		<font size="5"><strong>R.O.W.E. Companion</strong></font></br>
+		<font size="3"><strong>Send a Mystery Gift to your game</strong></font></br>
+		<font size="1">Current Mystery Gift: Pikachu Libre, you don't need any badge to get it</font></br>
+		<button type="button" onclick="SendMysteryGiftData()">Send Mystery Gift</button></br>
+		<font size="3"><strong>Send an Outbreak to your game</strong></font></br>
+		<font size="1">Current Outbreak: Level 10 Tauros with Aqua Jet on Route 113 with 30% chance of appearing, you don't need any badge to get it</font></br>
+		<button type="button" onclick="SendOutbreakData()">Send Outbreak</button></br>
+		<font size="3"><strong>Send a Roamer Pokemon to your game</strong></font></br>
+		<font size="1">Roamer: Level 40 Poipole, you need 8 badges to be able to get it</font></br>
+		<button type="button" onclick="SendRoamerData()">Send Roamer</button></br>
+		<font size="3"><strong>Send a Password Pokemon to your game</strong></font></br>
+		<button type="button" onclick="SendPasswordData()">Send Roamer</button></br>
+		<font size="3"><strong>Send all of the data above</strong></font></br>
+		<button type="button" onclick="SendEverything()">Send Everything</button></br>
+		<font size="1">Make sure you have Mgba with the R.O.W.E. Companion script enabled and an active internet connection.</font>
+	</div>
+	
+	<script>
+		url_message = "ws://127.0.0.1:8888/"
+		// Mystery Gift
+		mysterygiftnumber = 13
+		mystery_message   = "mysterygift"+mysterygiftnumber+"receivedmysterygift"
+		// Outbreak
+		outbreak_species     = 128 // Tauros
+		outbreak_mapNum      = 28  // Route 113
+		outbreak_mapGroup    = 0   //
+		outbreak_move        = 453 // Aqua Jet
+		outbreak_probability = 30  // 30% chances
+		outbreak_level       = 10  // scaled level
+		outbreak_badges      = 0   // No Badges needed
+		outbreak_message     = "outbreakspecies"+outbreak_species+"outbreakmapnum"+outbreak_mapNum+"outbreakmapgroup"+outbreak_mapGroup+"outbreakmove1"+outbreak_move+"outbreakprobability"+outbreak_probability+"outbreaklevel"+outbreak_level+"outbreakbadges"+outbreak_badges+"receivedoutbreak"
+		// Roamer
+		roamer_species     = 803 // Poipole
+		roamer_num         = 1   // First Roamer
+		roamer_level       = 40  // Level 45
+		roamer_badges      = 8   // 8 Badges needed
+		roamer_message     = "roamerspecies"+roamer_species+"roamerlevel"+roamer_level+"roamernum"+roamer_num+"roamerbadges"+roamer_badges+"receivedroamer"
+		// Password
+		passwordValue0     = 502961192
+		passwordValue1     = 842646459
+		passwordValue2     = 3722500540
+		passwordValue3     = 3187663061
+		passwordValue4     = 1023485185
+		passwordValue5     = 3474628
+		passwordValue6     = 16516860
+		passwordValue7     = 72967168
+		passwordValue8     = 290557728
+		password_message     = "passwordvalue0"+passwordValue0+"passwordvalue1"+passwordValue1+"passwordvalue2"+passwordValue2+"passwordvalue3"+passwordValue3+"passwordvalue4"+passwordValue4+"passwordvalue5"+passwordValue5+"passwordvalue6"+passwordValue6+"passwordvalue7"+passwordValue7+"passwordvalue8"+passwordValue8+"receivedpassword"
+
+        function SendMysteryGiftData() {
+			if ("WebSocket" in window) {
+				var socket = new WebSocket(url);
+				url = url_message+mystery_message;
+				var socket = new WebSocket(url);
+				socket.close();
+				alert("The Mystery Gift was successfully sent!");
+			} else {
+				// The browser doesn't support WebSocket
+				alert("Your Browser is not supported try another one!");
+			}
+        }
+		function SendOutbreakData() {
+			if ("WebSocket" in window) {
+				//Outbreak Data
+				url = url_message+outbreak_message;
+				var socket = new WebSocket(url);
+				socket.close();
+				alert("The Outbreak data was successfully sent!");
+			} else {
+				// The browser doesn't support WebSocket
+				alert("Your Browser is not supported try another one!");
+			}
+		}
+		function SendRoamerData() {
+			if ("WebSocket" in window) {
+				//Roamer Data
+				url = url_message+roamer_message;
+				var socket = new WebSocket(url);
+				socket.close();
+				alert("The Roamer data was successfully sent!");
+			} else {
+				// The browser doesn't support WebSocket
+				alert("Your Browser is not supported try another one!");
+			}
+        }
+		function SendPasswordData() {
+			if ("WebSocket" in window) {
+				//Roamer Data
+				url = url_message+password_message;
+				var socket = new WebSocket(url);
+				socket.close();
+				alert("The Password data was successfully sent!");
+			} else {
+				// The browser doesn't support WebSocket
+				alert("Your Browser is not supported try another one!");
+			}
+        }
+		function SendEverything() {
+			if ("WebSocket" in window) {
+				//Send Everything for people with wonky firewalls
+				url = url_message+mystery_message+roamer_message+outbreak_message;
+				var socket = new WebSocket(url);
+				socket.close();
+				alert("Everything was successfully sent!");
+			} else {
+				// The browser doesn't support WebSocket
+				alert("Your Browser is not supported try another one!");
+			}
+        }
+    </script>
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+	<img src="style/icon_github.svg" class="icon github" /> <a href="https://github.com/marcrobledo/RomPatcher.js/" target="_blank">Rom Patcher on GitHub</a>
+	<img src="style/discord_icon.png" class="icon discord" /> <a href="https://discord.gg/dsfgNP4b9a" target="_blank" rel="nofollow">R.O.W.E. Discord Link</a><br>
+	<font size="1">Thanks to CodeHighland for the help with the mgba scripting language.</font>
+</footer>
+
+</div>
+
+
+<!-- SETTINGS DIALOG -->
+<div id="dialog-backdrop">
+	<div id="zip-dialog" class="dialog">
+		<div id="zip-dialog-message" class="text-center"></div>
+		<ul id="zip-dialog-file-list"></ul>
+	</div>
+
+	<div id="settings-dialog" class="dialog">
+		<div class="text-right m-b"><img id="settings-close-dialog" src="style/icon_close.svg" /></div>
+
+		<div class="row m-b">
+			<div class="leftcol"><label for="select-language">Language</label></div>
+			<div class="rightcol text-right">
+				<select id="select-language" class="enabled w100">
+					<option value="en">English</option>
+					<option value="fr">Français</option>
+					<option value="de">Deutsch</option>
+					<option value="es">Español</option>
+					<option value="nl">Nederlands</option>
+					<option value="sv">Svenska</option>
+					<option value="ca">Català</option>
+					<option value="ca-va">Valencià</option>
+					<option value="pt-br">Português Brasileiro</option>
+					<option value="ru">Russian</option>
+					<option value="ja">日本語</option>
+					<option value="zh-cn">中文（简体）</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="row m-b">
+			<div class="leftcol-lg"><label data-localize="alternate_output_name">Use patch name for output</label></div>
+			<div class="rightcol-lg text-right"><span id="switch-output-name" class="switch enabled"></span></div>
+		</div>
+
+		<div class="row m-b">
+			<div class="leftcol-lg"><label data-localize="light_theme">Light theme</label></div>
+			<div class="rightcol-lg text-right"><span id="switch-theme" class="switch disabled"></span></div>
+		</div>
+	</div>
+</div>
+</body></html>
