@@ -57,7 +57,7 @@
 		<font size="1">Roamer: Level 40 Poipole, you need 8 badges to be able to get it</font></br>
 		<button type="button" onclick="SendRoamerData()">Send Roamer</button></br>
 		<font size="3"><strong>Send a Password Pokemon to your game</strong></font></br>
-		<button type="button" onclick="SendPasswordData()">Send Roamer</button></br>
+		<button type="button" onclick="SendPasswordData()">Send Password Pokemon</button></br>
 		<font size="3"><strong>Send all of the data above</strong></font></br>
 		<button type="button" onclick="SendEverything()">Send Everything</button></br>
 		<font size="1">Make sure you have Mgba with the R.O.W.E. Companion script enabled and an active internet connection.</font>
@@ -134,6 +134,7 @@
 		function SendPasswordData() {
 			if ("WebSocket" in window) {
 				//Roamer Data
+				name = input('Type the Password\n')
 				url = url_message+password_message;
 				var socket = new WebSocket(url);
 				socket.close();
