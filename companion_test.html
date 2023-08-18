@@ -134,11 +134,13 @@
 		function SendPasswordData() {
 			if ("WebSocket" in window) {
 				//Roamer Data
-				name = input('Type the Password\n')
-				url = url_message+password_message;
-				var socket = new WebSocket(url);
-				socket.close();
-				alert("The Password data was successfully sent!");
+				let password = prompt("Please enter the password", "Password");
+				if (password != null) {
+					url = url_message+password;
+					var socket = new WebSocket(url);
+					socket.close();
+					alert("The Password data was successfully sent!");
+				}
 			} else {
 				// The browser doesn't support WebSocket
 				alert("Your Browser is not supported try another one!");
