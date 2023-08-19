@@ -58,7 +58,7 @@
 		<button type="button" onclick="SendRoamerData()">Send Roamer</button></br>
 		<font size="3"><strong>Send all of the data above</strong></font></br>
 		<button type="button" onclick="SendEverything()">Send Everything</button></br>
-		<font size="1">Make sure you have Mgba with the R.O.W.E. Companion script enabled and an active internet connection.</font>
+		<font size="1">Make sure you have Mgba with the R.O.W.E. Companion script enabled and an active internet connection.</font></br>
 		<font size="3"><strong>Send a Password Trainer to your game</strong></font></br>
 		<button type="button" onclick="SendPasswordTrainerData()">Send Password Trainer</button></br>
 	</div>
@@ -199,8 +199,8 @@
 			var trainerpassword34  = fulltrainerpassword2[34];
 			var trainerpassword35  = fulltrainerpassword2[35];
 			var trainerpassword36  = fulltrainerpassword2[36];
-			if (password0 != null) {
-				password_message2 = 
+			if (trainerpassword0 != null) {
+				trainerpassword_message = 
 				"passwordtrainervalue0"+trainerpassword0+
 				"passwordtrainervalue1"+trainerpassword1+
 				"passwordtrainervalue2"+trainerpassword2+
@@ -239,7 +239,7 @@
 				"passwordtrainervalue35"+trainerpassword35+
 				"passwordtrainervalue36"+trainerpassword36+
 				"receivedtrainerpassword"
-				url = url_message+password_message2;
+				url = url_message+trainerpassword_message;
 				var socket = new WebSocket(url);
 				socket.close();
 				alert("The Trainer data was successfully sent!");
