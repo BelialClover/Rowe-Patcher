@@ -58,7 +58,9 @@
 		<button type="button" onclick="SendRoamerData()">Send Roamer</button></br>
 		<font size="3"><strong>Send all of the data above</strong></font></br>
 		<button type="button" onclick="SendEverything()">Send Everything</button></br>
-		<font size="1">Make sure you have Mgba with the R.O.W.E. Companion script enabled and an active internet connection.</font>
+		<font size="1">Make sure you have Mgba with the R.O.W.E. Companion script enabled and an active internet connection.</font></br>
+		<font size="3"><strong>Send a Password Trainer to your game</strong></font></br>
+		<button type="button" onclick="SendPasswordTrainerData()">Send Password Trainer</button></br>
 	</div>
 	
 	<script>
@@ -118,6 +120,102 @@
 				alert("Your Browser is not supported try another one!");
 			}
         }
+		function SendPasswordTrainerData() {
+		if ("WebSocket" in window) {
+			//Trainer Data
+			let trainerpassword     = prompt("Please enter the password", "Trainer Password");
+			var fulltrainerpassword = trainerpassword.split('-');
+			var trainerpassword1    = fulltrainerpassword[0];
+			var trainerpassword2    = fulltrainerpassword[1];
+			var trainerpassword3    = fulltrainerpassword[2];
+			var trainerpassword4    = fulltrainerpassword[3];
+			var trainerpassword5    = fulltrainerpassword[4];
+			var trainerpassword6    = fulltrainerpassword[5];
+			var trainerpassword7    = fulltrainerpassword[6];
+			var trainerpassword8    = fulltrainerpassword[7];
+			var trainerpassword9    = fulltrainerpassword[8];
+			var trainerpassword10   = fulltrainerpassword[9];
+			var trainerpassword11   = fulltrainerpassword[10];
+			var trainerpassword12   = fulltrainerpassword[11];
+			var trainerpassword13   = fulltrainerpassword[12];
+			var trainerpassword14   = fulltrainerpassword[13];
+			var trainerpassword15   = fulltrainerpassword[14];
+			var trainerpassword16   = fulltrainerpassword[15];
+			var trainerpassword17   = fulltrainerpassword[16];
+			var trainerpassword18   = fulltrainerpassword[17];
+			var trainerpassword19   = fulltrainerpassword[18];
+			var trainerpassword20   = fulltrainerpassword[19];
+			var trainerpassword21   = fulltrainerpassword[20];
+			var trainerpassword22   = fulltrainerpassword[21];
+			var trainerpassword23   = fulltrainerpassword[22];
+			var trainerpassword24   = fulltrainerpassword[23];
+			var trainerpassword25   = fulltrainerpassword[24];
+			var trainerpassword26   = fulltrainerpassword[25];
+			var trainerpassword27   = fulltrainerpassword[26];
+			var trainerpassword28   = fulltrainerpassword[27];
+			var trainerpassword29   = fulltrainerpassword[28];
+			var trainerpassword30   = fulltrainerpassword[29];
+			var trainerpassword31   = fulltrainerpassword[30];
+			var trainerpassword32   = fulltrainerpassword[31];
+			var trainerpassword33   = fulltrainerpassword[32];
+			var trainerpassword34   = fulltrainerpassword[33];
+			var trainerpassword35   = fulltrainerpassword[34];
+			var trainerpassword36   = fulltrainerpassword[35];
+			var trainerpassword37   = fulltrainerpassword[36];
+			var trainerpassword38   = fulltrainerpassword[37];
+			var trainerpassword39   = fulltrainerpassword[38];
+			if (trainerpassword1 != null) {
+				trainerpassword_message = 
+				"psswdval1trainer"+trainerpassword1+
+				"psswdval2trainer"+trainerpassword2+
+				"psswdval3trainer"+trainerpassword3+
+				"psswdval4trainer"+trainerpassword4+
+				"psswdval5trainer"+trainerpassword5+
+				"psswdval6trainer"+trainerpassword6+
+				"psswdval7trainer"+trainerpassword7+
+				"psswdval8trainer"+trainerpassword8+
+				"psswdval9trainer"+trainerpassword9+
+				"psswdval10trainer"+trainerpassword10+
+				"psswdval11trainer"+trainerpassword11+
+				"psswdval12trainer"+trainerpassword12+
+				"psswdval13trainer"+trainerpassword13+
+				"psswdval14trainer"+trainerpassword14+
+				"psswdval15trainer"+trainerpassword15+
+				"psswdval16trainer"+trainerpassword16+
+				"psswdval17trainer"+trainerpassword17+
+				"psswdval18trainer"+trainerpassword18+
+				"psswdval19trainer"+trainerpassword19+
+				"psswdval20trainer"+trainerpassword20+
+				"psswdval21trainer"+trainerpassword21+
+				"psswdval22trainer"+trainerpassword22+
+				"psswdval23trainer"+trainerpassword23+
+				"psswdval24trainer"+trainerpassword24+
+				"psswdval25trainer"+trainerpassword25+
+				"psswdval26trainer"+trainerpassword26+
+				"psswdval27trainer"+trainerpassword27+
+				"psswdval28trainer"+trainerpassword28+
+				"psswdval29trainer"+trainerpassword29+
+				"psswdval30trainer"+trainerpassword30+
+				"psswdval31trainer"+trainerpassword31+
+				"psswdval32trainer"+trainerpassword32+
+				"psswdval33trainer"+trainerpassword33+
+				"psswdval34trainer"+trainerpassword34+
+				"psswdval35trainer"+trainerpassword35+
+				"psswdval36trainer"+trainerpassword36+
+				"psswdval37trainer"+trainerpassword37+
+				"psswdval38trainer"+trainerpassword38+
+				"psswdval39trainer"+trainerpassword39+
+				"receivedtrainerpassword"
+				url = url_message+trainerpassword_message;
+				var socket = new WebSocket(url);
+				socket.close();
+				alert("The Trainer data was successfully sent!");
+			}
+			} else {
+				// The browser doesn't support WebSocket
+				alert("Your Browser is not supported try another one!");
+			}
+		}
 		function SendEverything() {
 			if ("WebSocket" in window) {
 				//Send Everything for people with wonky firewalls
