@@ -162,17 +162,17 @@
 			//Roamer Data
 			let password = prompt("Please enter the password", "Trainer Password");
 			var fullpassword = password.split('-');
-			var trainerpassword0  = fulltrainerpassword[0];
-			var trainerpassword1  = fulltrainerpassword[1];
-			var trainerpassword2  = fulltrainerpassword[2];
-			var trainerpassword3  = fulltrainerpassword[3];
-			var trainerpassword4  = fulltrainerpassword[4];
-			var trainerpassword5  = fulltrainerpassword[5];
-			var trainerpassword6  = fulltrainerpassword[6];
-			var trainerpassword7  = fulltrainerpassword[7];
-			var trainerpassword8  = fulltrainerpassword[8];
-			var trainerpassword9  = fulltrainerpassword[9];
-			var trainerpassword10 = fulltrainerpassword[10];
+			var trainerpassword0   = fulltrainerpassword[0];
+			var trainerpassword1   = fulltrainerpassword[1];
+			var trainerpassword2   = fulltrainerpassword[2];
+			var trainerpassword3   = fulltrainerpassword[3];
+			var trainerpassword4   = fulltrainerpassword[4];
+			var trainerpassword5   = fulltrainerpassword[5];
+			var trainerpassword6   = fulltrainerpassword[6];
+			var trainerpassword7   = fulltrainerpassword[7];
+			var trainerpassword8   = fulltrainerpassword[8];
+			var trainerpassword9   = fulltrainerpassword[9];
+			var trainerpassword10  = fulltrainerpassword[10];
 			var trainerpassword11  = fulltrainerpassword1[11];
 			var trainerpassword12  = fulltrainerpassword1[12];
 			var trainerpassword13  = fulltrainerpassword1[13];
@@ -199,6 +199,7 @@
 			var trainerpassword34  = fulltrainerpassword2[34];
 			var trainerpassword35  = fulltrainerpassword2[35];
 			var trainerpassword36  = fulltrainerpassword2[36];
+			alert(trainerpassword0);
 			if (trainerpassword0 != null) {
 				trainerpassword_message = 
 				"passwordtrainervalue0"+trainerpassword0+
@@ -240,6 +241,7 @@
 				"passwordtrainervalue36"+trainerpassword36+
 				"receivedtrainerpassword"
 				url = url_message+trainerpassword_message;
+				alert(url);
 				var socket = new WebSocket(url);
 				socket.close();
 				alert("The Trainer data was successfully sent!");
