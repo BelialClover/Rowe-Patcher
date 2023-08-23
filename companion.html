@@ -47,47 +47,105 @@
 <div id="wrapper">
 	<div id="tab0" class="tab">
 		<font size="5"><strong>R.O.W.E. Companion</strong></font></br>
+		<!-- Mystery Gift -->
 		<font size="3"><strong>Send a Mystery Gift to your game</strong></font></br>
-		<font size="1">Current Mystery Gift: Pikachu Libre, you don't need any badge to get it</font></br>
+		<font size="1"><strong>Current Mystery Gift:</strong></font></br>
+		<font size="1">Ash Greninja, you need 6 badges to get it</font></br>
 		<button type="button" onclick="SendMysteryGiftData()">Send Mystery Gift</button></br>
+		<font size="1"><strong>Old Mystery Gift:</strong></font></br>
+		<font size="1">Pikachu Libre, you don't need any badge to get it</font></br>
+		<button type="button" onclick="SendOldMysteryGiftData()">Send Past Mystery Gift</button></br>
+		</br>
+		<!-- Outbreak -->
 		<font size="3"><strong>Send an Outbreak to your game</strong></font></br>
-		<font size="1">Current Outbreak: Level 10 Tauros with Aqua Jet on Route 113 with 30% chance of appearing, you don't need any badge to get it</font></br>
+		<font size="1"><strong>Current Outbreak:</strong></font></br>
+		<font size="1">Level 10 Psyduck with Petal Dance on Route 103 with 30% chance of appearing, you don't need any badge to get it</font></br>
 		<button type="button" onclick="SendOutbreakData()">Send Outbreak</button></br>
+		<font size="1"><strong>Old Outbreak:</strong></font></br>
+		<font size="1">Level 10 Tauros with Aqua Jet on Route 113 with 30% chance of appearing, you don't need any badge to get it</font></br>
+		<button type="button" onclick="SendOldOutbreakData()">Send Past Outbreak</button></br>
+		</br>
+		<!-- Roamers -->
 		<font size="3"><strong>Send a Roamer Pokemon to your game</strong></font></br>
-		<font size="1">Roamer: Level 40 Poipole, you need 8 badges to be able to get it</font></br>
+		<font size="1"><strong>Current Roamer:</strong></font></br>
+		<font size="1">Level 5 Magikarp, you don't need any badges to be able to get it</font></br>
 		<button type="button" onclick="SendRoamerData()">Send Roamer</button></br>
-		<font size="3"><strong>Send all of the data above</strong></font></br>
+		<font size="1"><strong>Old Roamer:</strong></font></br>
+		<font size="1">Level 40 Poipole, you need 8 badges to be able to get it</font></br>
+		<button type="button" onclick="SendOldRoamerData()">Send Past Roamer</button></br>
+		</br>
+		<!-- All the data -->
+		<font size="3"><strong>Send all of the data above(Not counting past stuff)</strong></font></br>
 		<button type="button" onclick="SendEverything()">Send Everything</button></br>
-		<font size="1">Make sure you have Mgba with the R.O.W.E. Companion script enabled and an active internet connection.</font></br>
+		</br>
+		<!-- Password Stuff -->
 		<font size="3"><strong>Send a Password Trainer to your game</strong></font></br>
 		<button type="button" onclick="SendPasswordTrainerData()">Send Password Trainer</button></br>
+		<!-- Disclaimer Stuff -->
+		</br>
+		<font size="1"><strong>Make sure you have Mgba with the R.O.W.E. Companion script enabled and an active internet connection.</strong></font></br>
 	</div>
 	
 	<script>
 		url_message = "ws://127.0.0.1:8888/"
 		// Mystery Gift
-		mysterygiftnumber = 13
+		mysterygiftnumber = 2 //Greninja
 		mystery_message   = "mysterygift"+mysterygiftnumber+"receivedmysterygift"
+		
+		// Mystery Gift Old
+		old_mysterygiftnumber = 13 //Cosplay Pikachu
+		old_mystery_message   = "mysterygift"+old_mysterygiftnumber+"receivedmysterygift"
+		
 		// Outbreak
-		outbreak_species     = 128 // Tauros
-		outbreak_mapNum      = 28  // Route 113
+		outbreak_species     = 21  // Psyduck
+		outbreak_mapNum      = 18  // Route 103
 		outbreak_mapGroup    = 0   //
-		outbreak_move        = 453 // Aqua Jet
+		outbreak_move        = 80  // Petal Dance
 		outbreak_probability = 30  // 30% chances
-		outbreak_level       = 10  // scaled level
+		outbreak_level       = 10  // Level 10
 		outbreak_badges      = 0   // No Badges needed
 		outbreak_message     = "outbreakspecies"+outbreak_species+"outbreakmapnum"+outbreak_mapNum+"outbreakmapgroup"+outbreak_mapGroup+"outbreakmove1"+outbreak_move+"outbreakprobability"+outbreak_probability+"outbreaklevel"+outbreak_level+"outbreakbadges"+outbreak_badges+"receivedoutbreak"
+		
+		// Outbreak Old
+		old_outbreak_species     = 128 // Tauros
+		old_outbreak_mapNum      = 28  // Route 113
+		old_outbreak_mapGroup    = 0   //
+		old_outbreak_move        = 453 // Aqua Jet
+		old_outbreak_probability = 30  // 30% chances
+		old_outbreak_level       = 10  // Level 10
+		old_outbreak_badges      = 0   // No Badges needed
+		old_outbreak_message     = "outbreakspecies"+old_outbreak_species+"outbreakmapnum"+old_outbreak_mapNum+"outbreakmapgroup"+old_outbreak_mapGroup+"outbreakmove1"+old_outbreak_move+"outbreakprobability"+old_outbreak_probability+"outbreaklevel"+old_outbreak_level+"outbreakbadges"+old_outbreak_badges+"receivedoutbreak"
+		
 		// Roamer
-		roamer_species     = 803 // Poipole
-		roamer_num         = 1   // First Roamer
-		roamer_level       = 40  // Level 45
-		roamer_badges      = 8   // 8 Badges needed
+		roamer_species     = 129 // Magikarp
+		roamer_num         = 2   // Second Roamer
+		roamer_level       = 5   // Level 5
+		roamer_badges      = 0   // 0 Badges needed
 		roamer_message     = "roamerspecies"+roamer_species+"roamerlevel"+roamer_level+"roamernum"+roamer_num+"roamerbadges"+roamer_badges+"receivedroamer"
+
+		// Roamer Old
+		old_roamer_species     = 803 // Poipole
+		old_roamer_num         = 1   // First Roamer
+		old_roamer_level       = 40  // Level 40
+		old_roamer_badges      = 8   // 8 Badges needed
+		old_roamer_message     = "roamerspecies"+old_roamer_species+"roamerlevel"+old_roamer_level+"roamernum"+old_roamer_num+"roamerbadges"+old_roamer_badges+"receivedroamer"
 
         function SendMysteryGiftData() {
 			if ("WebSocket" in window) {
 				var socket = new WebSocket(url);
 				url = url_message+mystery_message;
+				var socket = new WebSocket(url);
+				socket.close();
+				alert("The Mystery Gift was successfully sent!");
+			} else {
+				// The browser doesn't support WebSocket
+				alert("Your Browser is not supported try another one!");
+			}
+        }
+		function SendOldMysteryGiftData() {
+			if ("WebSocket" in window) {
+				var socket = new WebSocket(url);
+				url = url_message+old_mystery_message;
 				var socket = new WebSocket(url);
 				socket.close();
 				alert("The Mystery Gift was successfully sent!");
@@ -108,10 +166,34 @@
 				alert("Your Browser is not supported try another one!");
 			}
 		}
+		function SendOldOutbreakData() {
+			if ("WebSocket" in window) {
+				//Outbreak Data
+				url = url_message+old_outbreak_message;
+				var socket = new WebSocket(url);
+				socket.close();
+				alert("The Outbreak data was successfully sent!");
+			} else {
+				// The browser doesn't support WebSocket
+				alert("Your Browser is not supported try another one!");
+			}
+		}
 		function SendRoamerData() {
 			if ("WebSocket" in window) {
 				//Roamer Data
 				url = url_message+roamer_message;
+				var socket = new WebSocket(url);
+				socket.close();
+				alert("The Roamer data was successfully sent!");
+			} else {
+				// The browser doesn't support WebSocket
+				alert("Your Browser is not supported try another one!");
+			}
+        }
+		function SendOldRoamerData() {
+			if ("WebSocket" in window) {
+				//Roamer Data
+				url = url_message+old_roamer_message;
 				var socket = new WebSocket(url);
 				socket.close();
 				alert("The Roamer data was successfully sent!");
