@@ -102,7 +102,7 @@
 		old_mystery_message   = "mysterygift"+old_mysterygiftnumber+"receivedmysterygift"
 		
 		// Outbreak
-		outbreak_species     = 21  // Psyduck
+		outbreak_species     = 54  // Psyduck
 		outbreak_mapNum      = 18  // Route 103
 		outbreak_mapGroup    = 0   //
 		outbreak_move        = 80  // Petal Dance
@@ -147,6 +147,7 @@
 				alert("Your Browser is not supported try another one!");
 			}
         }
+		
 		function SendOldMysteryGiftData() {
 			if ("WebSocket" in window) {
 				var socket = new WebSocket(url);
@@ -159,6 +160,7 @@
 				alert("Your Browser is not supported try another one!");
 			}
         }
+		
 		function SendOutbreakData() {
 			if ("WebSocket" in window) {
 				//Outbreak Data
@@ -171,6 +173,7 @@
 				alert("Your Browser is not supported try another one!");
 			}
 		}
+		
 		function SendOldOutbreakData() {
 			if ("WebSocket" in window) {
 				//Outbreak Data
@@ -183,6 +186,7 @@
 				alert("Your Browser is not supported try another one!");
 			}
 		}
+		
 		function SendRoamerData() {
 			if ("WebSocket" in window) {
 				//Roamer Data
@@ -195,6 +199,7 @@
 				alert("Your Browser is not supported try another one!");
 			}
         }
+		
 		function SendOldRoamerData() {
 			if ("WebSocket" in window) {
 				//Roamer Data
@@ -303,6 +308,8 @@
 				// The browser doesn't support WebSocket
 				alert("Your Browser is not supported try another one!");
 			}
+		}
+		
 		function SendUserPasswordTrainerData() {
 		if ("WebSocket" in window) {
 			//Trainer Data
