@@ -145,11 +145,15 @@
 		//Cry Stuff
 		cry_url = "https://github.com/BelialClover/ROWECries/raw/main/cries/"
 		cry_pokemon = "bulbasaur"
-		var audio = new Audio(cry_url + cry_pokemon + '.mp3');
-		audio.play();
+		
+		//Needs autoplay enabled
+		//var audio = new Audio(cry_url + cry_pokemon + '.mp3');
+		//audio.play();
+		
 		
 		function PlayCry() {
-			
+			var audio = new Audio(cry_url + cry_pokemon + '.mp3');
+			audio.play();
 		}
 
         function SendMysteryGiftData() {
