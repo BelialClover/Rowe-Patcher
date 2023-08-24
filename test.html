@@ -86,7 +86,12 @@
 		<font size="1">The user <strong>tsukki_dreams</strong> on Discord shared this trainer password and you can use it to battle it in-game</font></br>
 		<button type="button" onclick="SendUserPasswordTrainerData()">Send a Trainer into your game</button></br>
 		
+		</br>
 		<button type="button" onclick="PlayCry()">Test</button></br>
+		
+		<!-- <audio controls autoplay>
+			<source src = "https://github.com/BelialClover/ROWECries/raw/main/cries/bulbasaur.mp3" type = "audio/mp3" />
+		</audio> -->
 		
 		<!-- Disclaimer Stuff -->
 		</br>
@@ -140,11 +145,11 @@
 		//Cry Stuff
 		cry_url = "https://github.com/BelialClover/ROWECries/raw/main/cries/"
 		cry_pokemon = "bulbasaur"
+		var audio = new Audio(cry_url + cry_pokemon + '.mp3');
+		audio.play();
 		
 		function PlayCry() {
-			import vlc
-			p = vlc.MediaPlayer(cry_url+ cry_pokemon + ".mp3")
-			p.play()
+			
 		}
 
         function SendMysteryGiftData() {
@@ -455,7 +460,6 @@
 </footer>
 
 </div>
-
 
 <!-- SETTINGS DIALOG -->
 <div id="dialog-backdrop">
