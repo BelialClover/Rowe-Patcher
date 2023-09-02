@@ -59,16 +59,16 @@
 		<!-- Outbreak -->
 		<font size="3"><strong>Send an Outbreak to your game</strong></font></br>
 		<font size="1"><strong>Current Outbreak:</strong></font></br>
-		<font size="1">Level 10 Psyduck with Petal Dance on Route 103 with 30% chance of appearing, you don't need any badge to get it</font></br>
+		<font size="1">Level 10 Bagon with Wish on Route 114 with 20% chance of appearing, you don't need any badge to get it</font></br>
 		<button type="button" onclick="SendOutbreakData()">Send Outbreak</button></br>
 		<font size="1"><strong>Old Outbreak:</strong></font></br>
-		<font size="1">Level 10 Tauros with Aqua Jet on Route 113 with 30% chance of appearing, you don't need any badge to get it</font></br>
+		<font size="1">Level 10 Psyduck with Petal Dance on Route 103 with 30% chance of appearing, you don't need any badge to get it</font></br>
 		<button type="button" onclick="SendOldOutbreakData()">Send Past Outbreak</button></br>
 		</br>
 		<!-- Roamers -->
 		<font size="3"><strong>Send a Roamer Pokemon to your game</strong></font></br>
 		<font size="1"><strong>Current Roamer:</strong></font></br>
-		<font size="1">Level 5 Magikarp, you don't need any badges to be able to get it</font></br>
+		<font size="1">Level 70 Buzzwole, you need 8 badges to be able to get it</font></br>
 		<button type="button" onclick="SendRoamerData()">Send Roamer</button></br>
 		<font size="1"><strong>Old Roamer:</strong></font></br>
 		<font size="1">Level 40 Poipole, you need 8 badges to be able to get it</font></br>
@@ -83,7 +83,7 @@
 		<button type="button" onclick="SendPasswordTrainerData()">Send Password Trainer</button></br>
 		
 		<font size="1"><strong>Send an User Trainer to your game</strong></font></br>
-		<font size="1">The user <strong>tsukki_dreams</strong> on Discord shared this trainer password and you can use it to battle it in-game</font></br>
+		<font size="1">The user <strong>Quincy</strong> on Discord shared this trainer password and you can use it to battle it in-game</font></br>
 		<button type="button" onclick="SendUserPasswordTrainerData()">Send a Trainer into your game</button></br>
 		
 		<!-- Disclaimer Stuff -->
@@ -102,30 +102,30 @@
 		old_mystery_message   = "mysterygift"+old_mysterygiftnumber+"receivedmysterygift"
 		
 		// Outbreak
-		outbreak_species     = 54  // Psyduck
-		outbreak_mapNum      = 18  // Route 103
+		outbreak_species     = 371 // Bagon
+		outbreak_mapNum      = 29  // Route 114
 		outbreak_mapGroup    = 0   //
-		outbreak_move        = 80  // Petal Dance
-		outbreak_probability = 30  // 30% chances
+		outbreak_move        = 173 //Wish
+		outbreak_probability = 20  // 20% chances
 		outbreak_level       = 10  // Level 10
 		outbreak_badges      = 0   // No Badges needed
 		outbreak_message     = "outbreakspecies"+outbreak_species+"outbreakmapnum"+outbreak_mapNum+"outbreakmapgroup"+outbreak_mapGroup+"outbreakmove1"+outbreak_move+"outbreakprobability"+outbreak_probability+"outbreaklevel"+outbreak_level+"outbreakbadges"+outbreak_badges+"receivedoutbreak"
 		
 		// Outbreak Old
-		old_outbreak_species     = 128 // Tauros
-		old_outbreak_mapNum      = 28  // Route 113
+		old_outbreak_species     = 54  // Psyduck
+		old_outbreak_mapNum      = 18  // Route 103
 		old_outbreak_mapGroup    = 0   //
-		old_outbreak_move        = 453 // Aqua Jet
+		old_outbreak_move        = 80  // Petal Dance
 		old_outbreak_probability = 30  // 30% chances
 		old_outbreak_level       = 10  // Level 10
 		old_outbreak_badges      = 0   // No Badges needed
 		old_outbreak_message     = "outbreakspecies"+old_outbreak_species+"outbreakmapnum"+old_outbreak_mapNum+"outbreakmapgroup"+old_outbreak_mapGroup+"outbreakmove1"+old_outbreak_move+"outbreakprobability"+old_outbreak_probability+"outbreaklevel"+old_outbreak_level+"outbreakbadges"+old_outbreak_badges+"receivedoutbreak"
 		
 		// Roamer
-		roamer_species     = 129 // Magikarp
-		roamer_num         = 2   // Second Roamer
-		roamer_level       = 5   // Level 5
-		roamer_badges      = 0   // 0 Badges needed
+		roamer_species     = 794 // Buzzwole
+		roamer_num         = 3   // Third Roamer
+		roamer_level       = 70  // Level 70
+		roamer_badges      = 8   // 0 Badges needed
 		roamer_message     = "roamerspecies"+roamer_species+"roamerlevel"+roamer_level+"roamernum"+roamer_num+"roamerbadges"+roamer_badges+"receivedroamer"
 
 		// Roamer Old
@@ -313,7 +313,7 @@
 		function SendUserPasswordTrainerData() {
 		if ("WebSocket" in window) {
 			//Trainer Data
-			let trainerpassword     = "4293519310-3137297671-152764950-4024608767-0-3076784128-134256228-44-1034355069-3940417843-0-1583611904-2986692840-45-1155858512-3590216895-0-4150525952-798339449-1-2358772155-4158626091-0-3127115776-1502381717-60-221250348-4278639500-0-342097920-447590757-89-959447698-4098463388-0-946077696-1184428264-45-3961402213";
+			let trainerpassword     = "3806194123-4294962647-872415474-2161950755-0-241434624-522162993-9-872415474-2161950755-0-241434624-522162993-9-872415474-2161950755-0-241434624-522162993-9-872415474-2161950755-0-241434624-522162993-9-872415474-2161950755-0-241434624-522162993-9-872415474-2161950755-0-241434624-522162993-9-504758278";
 			var fulltrainerpassword = trainerpassword.split('-');
 			var trainerpassword1    = fulltrainerpassword[0];
 			var trainerpassword2    = fulltrainerpassword[1];
