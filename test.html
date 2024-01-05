@@ -87,7 +87,7 @@
 		<button type="button" onclick="SendUserPasswordTrainerData()">Send a Trainer into your game</button></br>
 		
 		</br>
-		<button type="button" onclick="PlayCry()">Test</button></br>
+		<button type="button" onclick="ReconnectToWebSocket()">Reconnect</button></br>
 		
 		<!-- <audio controls autoplay>
 			<source src = "https://github.com/BelialClover/ROWECries/raw/main/cries/bulbasaur.mp3" type = "audio/mp3" />
@@ -145,21 +145,103 @@
 		//Cry Stuff
 		cry_url = "https://github.com/BelialClover/ROWECries/raw/main/cries/"
 		cry_pokemon = "bulbasaur"
+
+		//Connection Stuff
+		url_server            = "ws://127.0.0.1:8888/"
+		connected_true        = 1
+		connected_false       = 0
+		connected_message     = "webconnectedstart"+connected_true+"receivedwebconnected"
+		not_connected_message = "webconnectedstart"+connected_false+"receivedwebconnected"
+
+		//NewWebSocket();
 		
 		//Needs autoplay enabled
 		//var audio = new Audio(cry_url + cry_pokemon + '.mp3');
 		//audio.play();
+
+		function ReconnectToWebSocket(){
+			//alert("Trying reconnection...");
+			NewWebSocket()
+			//alert("Reconnected successfully...");
+		}
 		
+		function NewWebSocket() {
+            if ("WebSocket" in window) {
+                // Let us open a web socket
+                var ws = new WebSocket(url_server);
+				var received_msg = "";
+				console.log("server: "    + url_server)
+				console.log("connected: " + ws.readyState)
+
+                ws.onopen = function() {
+                    // Web Socket is connected, send data using send()
+					//SendConnection();
+                    //ws.send("Message to send");
+                    //alert("Message was sent...");
+					console.log("The socket is open: " + ws.readyState)
+                };
+				
+                ws.onmessage = function (evt) { 
+                    received_msg = evt.data;
+					cry_pokemon = received_msg
+					PlayCry()
+					console.log("You received a message: " + received_msg + " - " + ws.readyState)
+                    //alert("Message was received..." + received_msg);
+                };
+				
+            	ws.onclose = function() { 
+            		// websocket is closed.
+                	//alert("Connection to the companion was lost..." + received_msg); 
+					//cry_pokemon = "pikachu"
+					//PlayCry()
+					//SendDisconnection();
+					console.log("The socket was closed: " + ws.readyState)
+					ReconnectToWebSocket();
+            	};
+
+				/*ws.onerror = function() { 
+            		// websocket is closed.
+                	alert("An error happened..." + received_msg); 
+            	};*/
+            } else {
+              
+               // The browser doesn't support WebSocket
+               alert("WebSocket NOT supported by your Browser!");
+            }
+        }
 		
 		function PlayCry() {
 			var audio = new Audio(cry_url + cry_pokemon + '.mp3');
 			audio.play();
 		}
 
+		function SendConnection() {
+			if ("WebSocket" in window) {
+				var url = url_message + connected_message;
+				var socket = new WebSocket(url);
+				socket.close();
+				console.log("connected: " + socket.readyState)
+			} else {
+				// The browser doesn't support WebSocket
+				alert("Your Browser is not supported try another one!");
+			}
+        }
+
+		function SendDisconnection() {
+			if ("WebSocket" in window) {
+				var url = url_message + not_connected_message;
+				var socket = new WebSocket(url);
+				socket.close();
+				console.log("disconnected: " + socket.readyState)
+			} else {
+				// The browser doesn't support WebSocket
+				alert("Your Browser is not supported try another one!");
+			}
+        }
+
         function SendMysteryGiftData() {
 			if ("WebSocket" in window) {
-				var socket = new WebSocket(url);
-				url = url_message+mystery_message;
+				var url = url_message + mystery_message;
 				var socket = new WebSocket(url);
 				socket.close();
 				alert("The Mystery Gift was successfully sent!");
@@ -171,8 +253,7 @@
 
         function SendMysteryGiftData() {
 			if ("WebSocket" in window) {
-				var socket = new WebSocket(url);
-				url = url_message+mystery_message;
+				var url = url_message + mystery_message;
 				var socket = new WebSocket(url);
 				socket.close();
 				alert("The Mystery Gift was successfully sent!");
@@ -184,8 +265,7 @@
 		
 		function SendOldMysteryGiftData() {
 			if ("WebSocket" in window) {
-				var socket = new WebSocket(url);
-				url = url_message+old_mystery_message;
+				var url = url_message + old_mystery_message;
 				var socket = new WebSocket(url);
 				socket.close();
 				alert("The Mystery Gift was successfully sent!");
@@ -198,7 +278,7 @@
 		function SendOutbreakData() {
 			if ("WebSocket" in window) {
 				//Outbreak Data
-				url = url_message+outbreak_message;
+				var url = url_message + outbreak_message;
 				var socket = new WebSocket(url);
 				socket.close();
 				alert("The Outbreak data was successfully sent!");
@@ -211,7 +291,7 @@
 		function SendOldOutbreakData() {
 			if ("WebSocket" in window) {
 				//Outbreak Data
-				url = url_message+old_outbreak_message;
+				var url = url_message + old_outbreak_message;
 				var socket = new WebSocket(url);
 				socket.close();
 				alert("The Outbreak data was successfully sent!");
@@ -224,7 +304,7 @@
 		function SendRoamerData() {
 			if ("WebSocket" in window) {
 				//Roamer Data
-				url = url_message+roamer_message;
+				var url = url_message + roamer_message;
 				var socket = new WebSocket(url);
 				socket.close();
 				alert("The Roamer data was successfully sent!");
@@ -237,7 +317,7 @@
 		function SendOldRoamerData() {
 			if ("WebSocket" in window) {
 				//Roamer Data
-				url = url_message+old_roamer_message;
+				var url = url_message + old_roamer_message;
 				var socket = new WebSocket(url);
 				socket.close();
 				alert("The Roamer data was successfully sent!");
@@ -333,7 +413,7 @@
 				"psswdval38trainer"+trainerpassword38+
 				"psswdval39trainer"+trainerpassword39+
 				"receivedtrainerpassword"
-				url = url_message+trainerpassword_message;
+				var url = url_message + trainerpassword_message;
 				var socket = new WebSocket(url);
 				socket.close();
 				alert("The Trainer data was successfully sent!");
@@ -430,7 +510,7 @@
 				"psswdval38trainer"+trainerpassword38+
 				"psswdval39trainer"+trainerpassword39+
 				"receivedtrainerpassword"
-				url = url_message+trainerpassword_message;
+				var url = url_message + trainerpassword_message;
 				var socket = new WebSocket(url);
 				socket.close();
 				alert("The Trainer data was successfully sent!");
