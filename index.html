@@ -126,6 +126,7 @@
 		<div class="buttons">
 			<span id="message-apply" class="message"></span>
 			<button id="button-apply" data-localize="apply_patch" class="disabled" disabled>Apply patch</button>
+			<p>Times Downloaded: <span id="patch-count">loading...</span></p>
 		</div>
 			<br><font size="3"><strong>Only use these emulators to avoid crashes</strong></font></br>
 			mGBA(Recommended), MyBoy!, Virtual Console Injection with NSUI, Real Hardware(via GBA Flashcard like an everdrive) and Retroarch mGBA core
@@ -274,4 +275,38 @@
 		</div>
 	</div>
 </div>
+
+<script>
+  const PATCH_COUNTER_GET = 'https://countapi.mileshilliard.com/api/v1/get/rowe-patcher-patches';
+  const PATCH_COUNTER_HIT = 'https://countapi.mileshilliard.com/api/v1/hit/rowe-patcher-patches';
+
+  // show the current patch count on load (without incrementing)
+  function loadPatchCount() {
+    fetch(PATCH_COUNTER_GET)
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById('patch-count').textContent = data.value;
+      })
+      .catch(() => {
+        document.getElementById('patch-count').textContent = '–';
+      });
+  }
+
+  // increment counter only when patch button is clicked
+  function incrementPatchCount() {
+    fetch(PATCH_COUNTER_HIT)
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById('patch-count').textContent = data.value;
+      });
+  }
+
+  // load count once on startup
+  loadPatchCount();
+
+  // add listener to the patch button
+  document.getElementById('button-apply').addEventListener('click', incrementPatchCount);
+</script>
+
+
 </body></html>
