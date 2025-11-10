@@ -215,6 +215,15 @@
 	<br />
 	<img src="style/icon_github.svg" class="icon github" /> <a href="https://github.com/marcrobledo/RomPatcher.js/" target="_blank">Rom Patcher on GitHub</a>
 	<img src="style/discord_icon.png" class="icon discord" /> <a href="https://discord.gg/dsfgNP4b9a" target="_blank" rel="nofollow">R.O.W.E. Discord Link</a>
+	
+	<p>Visits: <span id="visits">loading...</span></p>
+	  <script>
+		fetch('https://api.countapi.xyz/hit/belialclover.github.io/Rowe-Patcher/visits')
+		  .then(r => r.json())
+		  .then(r => {
+			document.getElementById('visits').textContent = r.value;
+		  });
+	  </script>
 </footer>
 
 </div>
